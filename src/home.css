@@ -1,0 +1,10 @@
+.home {
+    height: 100vh;
+    width: 100vw;
+}
+
+.home__background {
+    background: url('./assets/default-wallaper.webp') no-repeat center center fixed;
+    background-size: 100% 100%;
+    height: 100%;
+}
