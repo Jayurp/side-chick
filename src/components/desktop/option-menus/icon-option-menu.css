@@ -1,0 +1,40 @@
+.icon-option-item {
+  background: #2d2d30;
+  color: #ffffff;
+  width: 250px;
+  border-bottom: 1px solid grey;
+
+  p {
+    text-align: left;
+    font-size: smaller;
+    padding-left: 2rem;
+    cursor: pointer;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  p:hover {
+    background: #3a3a3c;
+  }
+}
+
+.last-item {
+  background: #2d2d30;
+  color: #ffffff;
+  width: 250px;
+
+  p {
+    text-align: left;
+    font-size: smaller;
+    padding-left: 2rem;
+    cursor: pointer;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  p:hover {
+    background: #3a3a3c;
+  }
+}

@@ -1,0 +1,36 @@
+.desktop {
+  height: 94vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: smaller;
+  transition: none !important;
+}
+
+.desktop-icon:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon-image {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.grid-layout {
+  height: 100%;
+  width: 100%;
+}
+
+.icon-option-menu {
+  position: absolute;
+  z-index: 50;
+}

@@ -53,4 +53,7 @@
     background-color: #393939;
     padding: 0.5rem 1rem;
     border-radius: 5rem;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
 }
