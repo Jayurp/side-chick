@@ -1,5 +1,5 @@
 import React from "react";
-import "./icon-option-menu.css"
+import "./icon-option-menu.css";
 
 function IconOptionMenu() {
   return (
