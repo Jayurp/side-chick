@@ -13,10 +13,10 @@
   color: white;
   font-size: smaller;
   transition: none !important;
+  user-select: none;
 }
 
 .desktop-icon:hover {
-  cursor: pointer;
   background-color: rgba(255, 255, 255, 0.1);
 }
 

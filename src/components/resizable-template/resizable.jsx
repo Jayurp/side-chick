@@ -6,7 +6,7 @@ import RestoreIcon from "../../assets/restore-icon.svg";
 import CloseIcon from "../../assets/close-icon.svg";
 import { Rnd } from "react-rnd";
 
-const ResizableWindow = ({ children, title }) => {
+const ResizableWindow = ({ children, title, id, onClose }) => {
   const [isMaximized, setIsMaximized] = useState(false);
   const [windowSize, setWindowSize] = useState({
     width: 800,
@@ -64,7 +64,7 @@ const ResizableWindow = ({ children, title }) => {
               alt={isMaximized ? "Restore" : "Maximize"}
             />
           </div>
-          <div className="icon">
+          <div className="icon" onClick={() => onClose(id)}>
             <img src={CloseIcon} alt="Close" />
           </div>
         </div>

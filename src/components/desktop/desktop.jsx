@@ -11,7 +11,7 @@ import IconOptionMenu from "./option-menus/icon-option-menu";
 import ResizableWindow from "../resizable-template/resizable";
 
 function Desktop() {
-  const [maxRows, setMaxRows] = React.useState(7);
+  const [maxRows, setMaxRows] = useState(7);
   const [position, setPosition] = useState({ x: 0, y: 0 }); // Changed ref to state for coordinates
   const [layout, setLayout] = useState([
     { i: "icon1", x: 0, y: 0, w: 1, h: 1 },
@@ -22,22 +22,24 @@ function Desktop() {
 
   const [appList, setAppList] = useState([
     {
-      id: 1,
+      id: "this-pc",
       name: "This PC",
       icon: ThisPcIcon,
       x: 0,
       y: 0,
       w: 1,
       h: 1,
+      show: false,
     },
     {
-      id: 2,
+      id: "vscode",
       name: "Visual Studio Code",
       icon: VSCodeIcon,
       x: 0,
       y: 1,
       w: 1,
       h: 1,
+      show: false,
     },
   ]);
 
@@ -78,6 +80,24 @@ function Desktop() {
     }
   };
 
+  const openApp = (id) => {
+    const randomTimeout = Math.random() * 2000;
+    document.body.style.cursor = "wait";
+
+    setTimeout(() => {
+      let list = [...appList];
+      list.find((app) => app.id === id).show = true;
+      setAppList(list);
+      document.body.style.cursor = "default";
+    }, randomTimeout);
+  };
+
+  const closeApp = (id) => { 
+    let list = [...appList];
+    list.find((app) => app.id === id).show = false;
+    setAppList(list);
+  }
+
   return (
     <div className="desktop">
       <ResponsiveGridLayout
@@ -96,12 +116,14 @@ function Desktop() {
           w: app.w,
           h: app.h,
         }))}
+        draggableCancel=".desktop-icon"
       >
         {appList.map((app) => (
           <div
             key={app.id}
             className="desktop-icon"
             onContextMenu={handleRightClickOnIcon}
+            onDoubleClick={(e) => openApp(app.id)}
           >
             <div className="icon-container-desktop">
               <img src={app.icon} className="icon-image" alt={app.name} />
@@ -122,13 +144,15 @@ function Desktop() {
           <IconOptionMenu />
         </div>
       )}
-      <ResizableWindow>
-        <iframe
-          src="https://github1s.com/Jayurp/side-chick"
-          title="Embedded Website"
-          className="vs-code-iframe"
-        />
-      </ResizableWindow>
+      {appList.find((app) => app.id === "vscode").show && (
+        <ResizableWindow id="vscode" onClose={closeApp}>
+          <iframe
+            src="https://github1s.com/Jayurp/side-chick"
+            title="Embedded Website"
+            className="vs-code-iframe"
+          />
+        </ResizableWindow>
+      )}
     </div>
   );
 }
