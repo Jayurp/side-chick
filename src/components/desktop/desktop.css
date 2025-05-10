@@ -39,3 +39,16 @@
   height: 100%;
   width: 100%;
 }
+
+.app-title {
+  text-align: center;
+  height: 50%;
+  display: flex;
+  align-items: start;
+}
+
+.icon-container-desktop{
+  display: flex;
+  height: 50%;
+  align-items: end;
+}

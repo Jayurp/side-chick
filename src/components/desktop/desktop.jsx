@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./desktop.css";
 import ThisPcIcon from "../../assets/this-pc-icon.png";
+import VSCodeIcon from "../../assets/vscode.svg";
 import GridLayout from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -16,8 +18,28 @@ function Desktop() {
     { i: "icon2", x: 1, y: 0, w: 1, h: 1 },
   ]);
   const [showIconOptions, setShowIconOptions] = useState(false);
-
   const ResponsiveGridLayout = WidthProvider(GridLayout);
+
+  const [appList, setAppList] = useState([
+    {
+      id: 1,
+      name: "This PC",
+      icon: ThisPcIcon,
+      x: 0,
+      y: 0,
+      w: 1,
+      h: 1,
+    },
+    {
+      id: 2,
+      name: "Visual Studio Code",
+      icon: VSCodeIcon,
+      x: 0,
+      y: 1,
+      w: 1,
+      h: 1,
+    },
+  ]);
 
   useEffect(() => {
     const updateRows = () => {
@@ -60,7 +82,6 @@ function Desktop() {
     <div className="desktop">
       <ResponsiveGridLayout
         className="grid-layout"
-        layout={layout}
         cols={15}
         rowHeight={90}
         maxRows={maxRows}
@@ -68,15 +89,28 @@ function Desktop() {
         compactType={null}
         preventCollision={true}
         isResizable={false}
+        layout={appList.map((app, index) => ({
+          i: app.id.toString(),
+          x: app.x,
+          y: app.y,
+          w: app.w,
+          h: app.h,
+        }))}
       >
-        <div
-          key="icon1"
-          className="desktop-icon"
-          onContextMenu={handleRightClickOnIcon}
-        >
-          <img src={ThisPcIcon} className="icon-image" /> <p>This PC</p>
-        </div>
+        {appList.map((app) => (
+          <div
+            key={app.id}
+            className="desktop-icon"
+            onContextMenu={handleRightClickOnIcon}
+          >
+            <div className="icon-container-desktop">
+              <img src={app.icon} className="icon-image" alt={app.name} />
+            </div>
+            <p className="app-title">{app.name}</p>
+          </div>
+        ))}
       </ResponsiveGridLayout>
+
       {showIconOptions && (
         <div
           className="icon-option-menu"
