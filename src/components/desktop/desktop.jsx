@@ -6,6 +6,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { WidthProvider } from "react-grid-layout";
 import IconOptionMenu from "./option-menus/icon-option-menu";
+import ResizableWindow from "../resizable-template/resizable";
 
 function Desktop() {
   const [maxRows, setMaxRows] = React.useState(7);
@@ -87,6 +88,13 @@ function Desktop() {
           <IconOptionMenu />
         </div>
       )}
+      <ResizableWindow>
+        <iframe
+          src="https://github1s.com/Jayurp/side-chick"
+          title="Embedded Website"
+          className="vs-code-iframe"
+        />
+      </ResizableWindow>
     </div>
   );
 }
