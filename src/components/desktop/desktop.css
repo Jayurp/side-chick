@@ -34,3 +34,8 @@
   position: absolute;
   z-index: 50;
 }
+
+.vs-code-iframe {
+  height: 100%;
+  width: 100%;
+}
